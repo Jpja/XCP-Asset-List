@@ -1,34 +1,34 @@
-# Asset Timeline for Counterparty & Dogeparty
+# XCP Asset List
 
-Shows a timeline of milestones on Counterparty / Dogeparty.
-
-Lookup an asset to show a timeline specific to that asset.
-
-Live versions:
-* https://jpjanssen.com/timeline/counterparty.html
-* https://jpjanssen.com/timeline/dogeparty.html
+Python script that ouputs a list of assets from the Counterparty DB.
 
 ## How It Works
 
-All broadcasts, asset issuances and token destructions are extracted from the latest DB with `db/counterparty_db_to_js.py` or `db/dogeparty_db_to_js.py`. The generated JS arrays are written to `db/cp_history.js` or `db/dp_history.js`.
+You need a copy of the Counterparty DB, ideally from [running a node](https://counterparty.io/docs/federated_node/). I've also shared a DB from Nov 2021 on [Dropbox](https://www.dropbox.com/s/ypad33bv6dzmgaf/counterparty-db.latest.tar.gz?dl=0).
 
-When `counterparty.html` or `dogeparty.html` loads, the relevant timeline is generated.
+Point `asset_list.py` to the DB file and it will output a csv file of all assets, including relevant timestamps (YYYY-MM-DD) and supply.
 
-A query string with parameter `asset` can be specified, e.g. `counterparty.html?asset=JPJA` shows the timeline for JPJA.
+The script `asset_list_filtered.py` outputs only assets with a locked supply of maximum 3000 and a history of DEX trading. These parameters can easily be tweaked from within the source code.
 
-Run a Counterparty / Dogeparty node to get the current DB.
+I've compiled lists in case you do not want to run the scripts yourself:
 
-## Milestones
+- `xcp_assets.csv` is a complete list of more than 100,000 registrations.
+- `xcp_assets_filtered.csv` contains less than 2000 assets with real usage from 2014-2017.
 
-Milestones are found by chronologically scanning events up until the defined conditions are met. Add more conditions, or review the existing ones, in function `list_of_firsts()`.
+## CSV Columns
 
-## Asset Timeline
-
-The timeline shows all changes to asset properties, such as increase of supply, lock, change of description, transfer of issuance, and token destructions.
-
-It also shows all broadcasts by the current issuer and any broadcast by third parties where the asset is mentioned.
-
-In case of a broadcast by the issuer, but the issuer does not mention the asset specifically, the text is grey to indicate that it may not be relevant. The same is true for broadcasts by third parties, as the mention may be coincidental.
+- 'asset'            unique name of the asset 
+- 'reg_date'         date of initially registering the name, YYYY-MM-DD
+- 'locked',          1 if supply is locked, else 0
+- 'lock_date'        date of locking the supply, empty if still unlocked
+- 'traded'           1 if the token has been traded on the DEX, else 0
+- 'trade_date'       date of first completed DEX trade, empty if still untraded
+- 'completed'        1 if both 'locked' and 'traded' are 1, else 0
+- 'complete_date'    the last of 'lock_date' or 'trade_date' if 'completed' is 1, else empty
+- 'divisible'        1 if divisible token, 0 if indivisible
+- 'tokens_issued'    quantity of tokens ever issued
+- 'tokens_destroyed' quantity of tokens ever destroyed
+- 'token_supply'     'tokens_issued' minus 'tokens_destroyed'
 
 ## Donate
 
