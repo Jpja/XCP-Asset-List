@@ -1,10 +1,10 @@
 # XCP Asset List
 
-Python script that ouputs a list of assets from the Counterparty DB.
+Outputs a list of assets from the Counterparty DB.
 
 ## How It Works
 
-You need a copy of the Counterparty DB, ideally from [running a node](https://counterparty.io/docs/federated_node/). I've also shared a DB from Nov 2021 on [Dropbox](https://www.dropbox.com/s/ypad33bv6dzmgaf/counterparty-db.latest.tar.gz?dl=0).
+You need a copy of the Counterparty DB, ideally from [running a node](https://counterparty.io/docs/federated_node/). Alternatively, download a DB from Nov 2021 on [Dropbox](https://www.dropbox.com/s/ypad33bv6dzmgaf/counterparty-db.latest.tar.gz?dl=0).
 
 Point `asset_list.py` to the DB file and it will output a csv file of all assets, including relevant timestamps (YYYY-MM-DD) and supply.
 
@@ -17,18 +17,18 @@ I've compiled lists in case you do not want to run the scripts yourself:
 
 ## CSV Columns
 
-- 'asset'            unique name of the asset 
-- 'reg_date'         date of initially registering the name, YYYY-MM-DD
-- 'locked',          1 if supply is locked, else 0
-- 'lock_date'        date of locking the supply, empty if still unlocked
-- 'traded'           1 if the token has been traded on the DEX, else 0
-- 'trade_date'       date of first completed DEX trade, empty if still untraded
-- 'completed'        1 if both 'locked' and 'traded' are 1, else 0
-- 'complete_date'    the last of 'lock_date' or 'trade_date' if 'completed' is 1, else empty
-- 'divisible'        1 if divisible token, 0 if indivisible
-- 'tokens_issued'    quantity of tokens ever issued
-- 'tokens_destroyed' quantity of tokens ever destroyed
-- 'token_supply'     'tokens_issued' minus 'tokens_destroyed'
+- 'asset' – unique name of the asset 
+- 'reg_date' – date of initially registering the name, YYYY-MM-DD
+- 'locked' – 1 if supply is locked, else 0
+- 'lock_date' – date of locking the supply, empty if still unlocked
+- 'traded' – 1 if the token has been traded on the DEX, else 0
+- 'trade_date' – date of first completed DEX trade, empty if still untraded
+- 'completed' – 1 if both 'locked' and 'traded' are 1, else 0
+- 'complete_date' – the last of 'lock_date' or 'trade_date' if 'completed' is 1, else empty
+- 'divisible' – 1 if divisible token, 0 if indivisible
+- 'tokens_issued' – quantity of tokens ever issued
+- 'tokens_destroyed' – quantity of tokens ever destroyed
+- 'token_supply' – 'tokens_issued' minus 'tokens_destroyed'
 
 ## Donate
 
