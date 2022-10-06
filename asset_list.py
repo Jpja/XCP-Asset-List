@@ -6,8 +6,8 @@
 'lock_date'        date of locking the supply, empty if still unlocked
 'traded'           1 if the token has been traded on the DEX, else 0
 'trade_date'       date of first completed DEX trade, empty if still untraded
-'completed'        1 if both 'locked' and 'traded' are 1, else 0
-'complete_date'    the last of 'lock_date' or 'trade_date' if 'completed' is 1, else empty
+'match_all'        1 if both conditions 'locked' and 'traded' are met, else 0
+'match_all_date'   the date both condition are met, else empty
 'divisible'        1 if divisible token, 0 if indivisible
 'tokens_issued'    quantity of tokens ever issued
 'tokens_destroyed' quantity of tokens ever destroyed
@@ -125,7 +125,7 @@ for i in range(len(assets)):
 
 
 #Add header row
-assets.insert(0, ['asset', 'reg_date', 'locked', 'lock_date', 'traded', 'trade_date', 'completed', 'complete_date', 'divisible', 'tokens_issued', 'tokens_destroyed', 'token_supply'])
+assets.insert(0, ['asset', 'reg_date', 'locked', 'lock_date', 'traded', 'trade_date', 'match_all', 'match_all_date', 'divisible', 'tokens_issued', 'tokens_destroyed', 'token_supply'])
 
   
 #Write .csv file

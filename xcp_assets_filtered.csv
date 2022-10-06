@@ -1,4 +1,4 @@
-asset,reg_date,locked,lock_date,traded,trade_date,completed,complete_date,divisible,tokens_issued,tokens_destroyed,token_supply
+asset,reg_date,locked,lock_date,traded,trade_date,match_all,match_all_date,divisible,tokens_issued,tokens_destroyed,token_supply
 JPJA,2014-06-22,1,2014-06-22,1,2014-06-27,1,2014-06-27,0,100.0,0.0,100.0
 FORMICACOIN,2014-07-17,1,2014-07-17,1,2014-07-29,1,2014-07-29,1,1000.0,0.0,1000.0
 BEEP,2014-07-07,1,2014-08-05,1,2014-08-02,1,2014-08-05,1,1000.0,0.0,1000.0
